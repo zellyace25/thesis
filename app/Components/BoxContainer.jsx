@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   category: {
-    fontSize: 20,
+    fontSize: 18,
   },
 });

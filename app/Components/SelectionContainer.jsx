@@ -1,5 +1,4 @@
 import { View, Text, Pressable, Alert, StyleSheet, Image } from "react-native";
-import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 
 export default function SelectionContainer({
@@ -7,47 +6,41 @@ export default function SelectionContainer({
   option1,
   option2,
   option3,
+  setSelectedOption
 }) {
-  const handleExit = () => {
-    router.replace("/Pages/Dashboard")
-  }
+
+  // const handleExit = () => {
+  //   router.replace("/Pages/Dashboard")
+  // }
+
   return (
     <>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.titleStyle}>{title}</Text>
-          <Pressable onPress={handleExit} style={styles.exit}>
-            <Image
-              style={styles.exitIcon}
-              source={require("../../src/assets/exit.png")}
-            />
-          </Pressable>
         </View>
 
         <View style={styles.selectionContainer}>
           <Pressable
             style={styles.selection}
-            onPress={() => Alert.alert("Clicked", option1)}
+            onPress={() => setSelectedOption(option1)}
           >
             <Text style={styles.selectionText}>{option1}</Text>
           </Pressable>
           <Pressable
             style={styles.selection}
-            onPress={() => Alert.alert("Clicked", option2)}
+            onPress={() => setSelectedOption(option2)}
           >
             <Text style={styles.selectionText}>{option2}</Text>
           </Pressable>
+          
           <Pressable
             style={styles.selection}
-            onPress={() => Alert.alert("Clicked", option3)}
+            onPress={() => setSelectedOption(option3)}
           >
             <Text style={styles.selectionText}>{option3}</Text>
           </Pressable>
         </View>
-
-        <Pressable style={styles.confirm}>
-          <Text style={styles.confirmText}>Confirm</Text>
-        </Pressable>
       </View>
     </>
   );
@@ -58,11 +51,14 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    height: 400,
-    backgroundColor: "#EAEDF2",
+    backgroundColor: "white",
     alignItems: "center",
     position: "absolute",
+    borderRadius: 20,
     zIndex: 1,
+    gap: 20,
+    paddingBottom: 30,
+    top: 60,
   },
   header: {
     display: "flex",
@@ -70,7 +66,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    borderRadius: 10,
+    height: 70,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     backgroundColor: "#1740E6",
     padding: 10,
   },
@@ -80,7 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     width: "100%",
-    gap: 10,
+    gap: 20,
   },
   selection: {
     backgroundColor: "white",
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "90%",
-    height: 45,
+    height: 50,
     borderRadius: 15,
     shadowColor: "black",
     shadowOffset: {

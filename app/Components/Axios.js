@@ -6,7 +6,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 export default function App() {
   const [text, setText] = useState("");
   const data = {
-    "frequency": "0"
+    "frequency": "20000"
   }
   const turnOn = async () => {
     await axios.get("https://kinetzki.pythonanywhere.com/turn-on");

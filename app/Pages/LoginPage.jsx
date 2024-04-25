@@ -4,12 +4,13 @@ import InputField from "../Components/InputField";
 import { router } from "expo-router";
 
 export default function LoginPage() {
-  const userIcon = require("../../src/assets/user.png");
-  const lockIcon = require("../../src/assets/lock.png");
+  const open = require("../../src/assets/view.png");
+  const closed = require("../../src/assets/hide.png");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const adminName = "A";
-  const adminPass = "a";
+  const [viewPass, setViewPass] = useState(false);
+  const adminName = "";
+  const adminPass = "";
   const handleUsername = (user) => {
     setUserName(user);
   };
@@ -41,12 +42,17 @@ export default function LoginPage() {
               placeHolder={"Username"}
               value={username}
               onChangeText={handleUsername}
+              setViewPass={setViewPass}
+              
             />
             <InputField
               placeHolder={"Password"}
-              secureTextEntry={true}
+              secureTextEntry={viewPass?false: true}
               value={password}
               onChangeText={handlePassword}
+              setViewPass={setViewPass}
+              open={open}
+              closed={closed}
             />
             <Pressable style={styles.signinButton} onPress={handleLogin}>
               <Text style={styles.buttonText}>Login</Text>
@@ -85,7 +91,6 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   inputField: {
-    flex: 3,
     gap: 10,
   },
   signinButton: {

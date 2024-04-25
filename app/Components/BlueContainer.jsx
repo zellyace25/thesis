@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Pressable,
-} from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 
 export default function BlueContainer({
   icon,
@@ -15,17 +9,10 @@ export default function BlueContainer({
   setViewOptions,
 }) {
   const [click, setClick] = useState(false);
-  const [view, setView] = useState(false);
-  useEffect(() => {
-    handleClick(click);
-  }, [click]);
-  useEffect(() => {
-    setViewOptions(view);
-  }, [view]);
   return (
     <Pressable
       style={styles.container}
-      onPress={() => setView(!view)}
+      onPress={() => setViewOptions((prev) => !prev)}
     >
       <Image source={icon} style={{ height: 40, width: 40 }} />
       <View
@@ -44,11 +31,22 @@ export default function BlueContainer({
 
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => setClick(!click)}
+          onPress={() => {
+            setViewOptions((prev) => !prev);
+          }}
         >
-          <View style={[styles.bgButton, click ? styles.on : styles.off]}>
-            <Pressable style={styles.button} onPress={() => setClick(!click)} />
-          </View>
+          <Pressable style={[styles.bgButton, click ? styles.on : styles.off]} onPress={() => {
+                setClick((prev) => !prev);
+                handleClick((prev) => !prev);
+              }}>
+            <Pressable
+              style={styles.button}
+              onPress={() => {
+                setClick((prev) => !prev);
+                handleClick((prev) => !prev);
+              }}
+            />
+          </Pressable>
         </Pressable>
       </View>
     </Pressable>

@@ -14,11 +14,11 @@ export default function LoadingPage() {
 
 const styles = StyleSheet.create({
   name: {
-    fontSize: 26,
+    fontSize: 30,
     fontWeight: "bold"
   },
   subName: {
-    fontSize: 18,
+    fontSize: 20,
   },
   container: {
     flex: 1,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    height: 200,
-    width: 200,
+    height: 300,
+    width: 300,
   },
 });
